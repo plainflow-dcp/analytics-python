@@ -1,8 +1,8 @@
 import logging
 from threading import Thread
 
-from analytics.version import VERSION
-from analytics.request import post
+from plainflow.version import VERSION
+from plainflow.request import post
 
 try:
     from queue import Empty
@@ -11,15 +11,15 @@ except:
 
 class Consumer(Thread):
     """Consumes the messages from the client's queue."""
-    log = logging.getLogger('segment')
+    log = logging.getLogger('plainflow')
 
-    def __init__(self, queue, write_key, upload_size=100, host=None, on_error=None):
+    def __init__(self, queue, secret_key, upload_size=100, host=None, on_error=None):
         """Create a consumer thread."""
         Thread.__init__(self)
         # Make consumer a daemon thread so that it doesn't block program exit
         self.daemon = True
         self.upload_size = upload_size
-        self.write_key = write_key
+        self.secret_key = secret_key
         self.host = host
         self.on_error = on_error
         self.queue = queue
@@ -79,7 +79,7 @@ class Consumer(Thread):
     def request(self, batch, attempt=0):
         """Attempt to upload the batch and retry before raising an error """
         try:
-            post(self.write_key, self.host, batch=batch)
+            post(self.secret_key, self.host, batch=batch)
         except:
             if attempt > self.retries:
                 raise

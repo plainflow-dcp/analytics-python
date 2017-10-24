@@ -3,8 +3,8 @@ import unittest
 import time
 import six
 
-from analytics.version import VERSION
-from analytics.client import Client
+from plainflow.version import VERSION
+from plainflow.client import Client
 
 
 class TestClient(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestClient(unittest.TestCase):
         self.failed = False
         self.client = Client('testsecret', on_error=self.fail)
 
-    def test_requires_write_key(self):
+    def test_requires_secret_key(self):
         self.assertRaises(AssertionError, Client)
 
     def test_empty_flush(self):
@@ -53,7 +53,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(msg['event'], 'python test event')
         self.assertEqual(msg['anonymousId'], 'anonymousId')
         self.assertEqual(msg['context']['library'], {
-            'name': 'analytics-python',
+            'name': 'plainflow-python',
             'version': VERSION
         })
         self.assertTrue(isinstance(msg['messageId'], str))
@@ -87,7 +87,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(msg['traits'], { 'trait': 'value' })
         self.assertEqual(msg['anonymousId'], 'anonymousId')
         self.assertEqual(msg['context']['library'], {
-            'name': 'analytics-python',
+            'name': 'plainflow-python',
             'version': VERSION
         })
         self.assertTrue(isinstance(msg['timestamp'], str))
@@ -120,7 +120,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(msg['traits'], { 'trait': 'value' })
         self.assertEqual(msg['anonymousId'], 'anonymousId')
         self.assertEqual(msg['context']['library'], {
-            'name': 'analytics-python',
+            'name': 'plainflow-python',
             'version': VERSION
         })
         self.assertTrue(isinstance(msg['timestamp'], str))
@@ -162,7 +162,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(msg['properties'], { 'property': 'value' })
         self.assertEqual(msg['anonymousId'], 'anonymousId')
         self.assertEqual(msg['context']['library'], {
-            'name': 'analytics-python',
+            'name': 'plainflow-python',
             'version': VERSION
         })
         self.assertEqual(msg['category'], 'category')
@@ -196,7 +196,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(msg['properties'], { 'property': 'value' })
         self.assertEqual(msg['anonymousId'], 'anonymousId')
         self.assertEqual(msg['context']['library'], {
-            'name': 'analytics-python',
+            'name': 'plainflow-python',
             'version': VERSION
         })
         self.assertTrue(isinstance(msg['timestamp'], str))
@@ -229,7 +229,7 @@ class TestClient(unittest.TestCase):
         # Make sure we are informed that the queue is at capacity
         self.assertFalse(success)
 
-    def test_success_on_invalid_write_key(self):
+    def test_success_on_invalid_secret_key(self):
         client = Client('bad_key', on_error=self.fail)
         client.track('userId', 'event')
         client.flush()

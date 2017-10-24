@@ -1,11 +1,11 @@
 
-from analytics.version import VERSION
-from analytics.client import Client
+from plainflow.version import VERSION
+from plainflow.client import Client
 
 __version__ = VERSION
 
 """Settings."""
-write_key = None
+secret_key = None
 host = None
 on_error = None
 debug = False
@@ -47,10 +47,10 @@ def join():
     _proxy('join')
 
 def _proxy(method, *args, **kwargs):
-    """Create an analytics client if one doesn't exist and send to it."""
+    """Create an plainflow client if one doesn't exist and send to it."""
     global default_client
     if not default_client:
-        default_client = Client(write_key, host=host, debug=debug, on_error=on_error,
+        default_client = Client(secret_key, host=host, debug=debug, on_error=on_error,
                                 send=send)
 
     fn = getattr(default_client, method)

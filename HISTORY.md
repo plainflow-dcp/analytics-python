@@ -1,3 +1,8 @@
+1.2.8.post1 / 2017-09-20
+==================
+
+  * The library has been forked to be used with Plainflow.
+
 1.2.8 / 2017-09-20
 ==================
 

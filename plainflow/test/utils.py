@@ -5,7 +5,7 @@ import unittest
 from dateutil.tz import tzutc
 import six
 
-from analytics import utils
+from plainflow import utils
 
 
 class TestUtils(unittest.TestCase):
@@ -72,5 +72,5 @@ class TestUtils(unittest.TestCase):
             self.assertEqual(cleaned['fn'], None)
 
     def test_remove_slash(self):
-        self.assertEqual('http://segment.io', utils.remove_trailing_slash('http://segment.io/'))
-        self.assertEqual('http://segment.io', utils.remove_trailing_slash('http://segment.io'))
+        self.assertEqual('http://www.plainflow.com', utils.remove_trailing_slash('http://www.plainflow.com/'))
+        self.assertEqual('http://www.plainflow.com', utils.remove_trailing_slash('http://www.plainflow.com'))

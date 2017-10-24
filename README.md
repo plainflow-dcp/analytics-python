@@ -1,32 +1,21 @@
-﻿analytics-python
+﻿Plainflow-python
 ==============
 
-[![Build Status](https://travis-ci.org/segmentio/analytics-python.svg?branch=master)](https://travis-ci.org/segmentio/analytics-python)
+[![Build Status](https://travis-ci.org/plainflow-dcp/plainflow-python.svg?branch=master)](https://travis-ci.org/plainflow-dcp/plainflow-python)
 
-analytics-python is a python client for [Segment](https://segment.com)
+Plainflow-python is a Python client for [Plainflow](https://www.plainflow.com)
 
 ## Documentation
 
-Documentation is available at [https://segment.com/libraries/python](https://segment.com/libraries/python).
+Documentation is available at [https://www.plainflow.com/docs/developers/sdk/python](https://www.plainflow.com/docs/developers/sdk/python).
 
 ## License
-
-```
-WWWWWW||WWWWWW
- W W W||W W W
-      ||
-    ( OO )__________
-     /  |           \
-    /o o|    MIT     \
-    \___/||_||__||_|| *
-         || ||  || ||
-        _||_|| _||_||
-       (__|__|(__|__|
-```
 
 (The MIT License)
 
 Copyright (c) 2013 Segment Inc. <friends@segment.com>
+
+Copyright (c) 2017 Plainflow, Inc. <friends@plainflow.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

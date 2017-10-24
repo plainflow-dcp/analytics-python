@@ -7,18 +7,14 @@ try:
 except ImportError:
     from distutils.core import setup
 
-# Don't import analytics-python module here, since deps may not be installed
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'analytics'))
+# Don't import plainflow module here, since deps may not be installed
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'plainflow'))
 from version import VERSION
 
 long_description = '''
-Segment is the simplest way to integrate analytics into your application.
-One API allows you to turn on any other analytics service. No more learning
-new APIs, repeated code, and wasted development time.
+This is the official Python client for Plainflow (https://www.plainflow.com).
 
-This is the official python client that wraps the Segment REST API (https://segment.com).
-
-Documentation and more details at https://github.com/segmentio/analytics-python
+Documentation and more details at https://www.plainflow.com/docs/developers/sdk/python
 '''
 
 install_requires = [
@@ -28,18 +24,18 @@ install_requires = [
 ]
 
 setup(
-    name='analytics-python',
+    name='plainflow',
     version=VERSION,
-    url='https://github.com/segmentio/analytics-python',
-    author='Segment',
-    author_email='friends@segment.com',
-    maintainer='Segment',
-    maintainer_email='friends@segment.com',
-    test_suite='analytics.test.all',
-    packages=['analytics', 'analytics.test'],
+    url='https://github.com/plainflow-dcp/plainflow-python',
+    author='Plainflow',
+    author_email='friends@plainflow.com',
+    maintainer='Plainflow',
+    maintainer_email='friends@plainflow.com',
+    test_suite='plainflow.test.all',
+    packages=['plainflow', 'plainflow.test'],
     license='MIT License',
     install_requires=install_requires,
-    description='The hassle-free way to integrate analytics into any python application.',
+    description='The official Python client for Plainflow.',
     long_description=long_description,
     classifiers=[
         "Development Status :: 5 - Production/Stable",

@@ -7,9 +7,9 @@ import atexit
 from dateutil.tz import tzutc
 from six import string_types
 
-from analytics.utils import guess_timezone, clean
-from analytics.consumer import Consumer
-from analytics.version import VERSION
+from plainflow.utils import guess_timezone, clean
+from plainflow.consumer import Consumer
+from plainflow.version import VERSION
 
 try:
     import queue
@@ -21,16 +21,16 @@ ID_TYPES = (numbers.Number, string_types)
 
 
 class Client(object):
-    """Create a new Segment client."""
-    log = logging.getLogger('segment')
+    """Create a new Plainflow client."""
+    log = logging.getLogger('plainflow')
 
-    def __init__(self, write_key=None, host=None, debug=False, max_queue_size=10000,
+    def __init__(self, secret_key=None, host=None, debug=False, max_queue_size=10000,
                  send=True, on_error=None):
-        require('write_key', write_key, string_types)
+        require('secret_key', secret_key, string_types)
 
         self.queue = queue.Queue(max_queue_size)
-        self.consumer = Consumer(self.queue, write_key, host=host, on_error=on_error)
-        self.write_key = write_key
+        self.consumer = Consumer(self.queue, secret_key, host=host, on_error=on_error)
+        self.secret_key = secret_key
         self.on_error = on_error
         self.debug = debug
         self.send = send
@@ -202,7 +202,7 @@ class Client(object):
         msg['timestamp'] = timestamp.isoformat()
         msg['messageId'] = str(uuid4())
         msg['context']['library'] = {
-            'name': 'analytics-python',
+            'name': 'plainflow-python',
             'version': VERSION
         }
 
@@ -218,7 +218,7 @@ class Client(object):
             self.log.debug('enqueued %s.', msg['type'])
             return True, msg
         except queue.Full:
-            self.log.warn('analytics-python queue is full')
+            self.log.warn('plainflow-python queue is full')
             return False, msg
 
     def flush(self):
