@@ -7,7 +7,7 @@ Plainflow-python is a Python client for [Plainflow](https://www.plainflow.com)
 
 ## Documentation
 
-Documentation is available at [https://www.plainflow.com/docs/developers/sdk/python](https://www.plainflow.com/docs/developers/sdk/python).
+Documentation is available at [https://www.plainflow.com/docs/developers/data-tracking-libraries/python](https://www.plainflow.com/docs/developers/data-tracking-libraries/python).
 
 ## License
 
